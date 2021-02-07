@@ -24,6 +24,10 @@ export default theme({
       }
     }
   },
+  css: [
+    // SCSS file in the project
+    './assets/css/fontawesome.min.css'
+  ],
   i18n: {
     locales: () => [
       {

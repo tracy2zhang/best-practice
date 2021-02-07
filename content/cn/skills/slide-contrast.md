@@ -1,7 +1,7 @@
 ---
 title: 图片对比效果
 category: 实战技巧
-position: 2
+position: 1
 ---
 
 ## 效果
