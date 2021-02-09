@@ -17,6 +17,9 @@ export default theme({
   docs: {
     primaryColor: '#55acee'
   },
+  content: {
+    liveEdit: false
+  },
   hooks: {
     'content:file:beforeParse': (file) => {
       if (file.extension === '.md') {
@@ -26,6 +29,7 @@ export default theme({
   },
   css: [
     // SCSS file in the project
+    './assets/css/reset.less',
     './assets/css/fontawesome.min.css'
   ],
   i18n: {
