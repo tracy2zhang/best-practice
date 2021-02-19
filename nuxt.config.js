@@ -14,6 +14,13 @@ function resolveFile (str) {
 }
 
 export default theme({
+  head: {
+    script: [
+      {
+        src: 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js'
+      }
+    ]
+  },
   docs: {
     primaryColor: '#55acee'
   },
@@ -48,5 +55,22 @@ export default theme({
       }
     ],
     defaultLocale: 'cn'
-  }
+  },
+  plugins: [
+    path.resolve(__dirname, 'plugins/svg-icon') // 注册svg插件文件 
+  ],
+  build: {
+    extend (config, ctx) {
+      // 排除 nuxt 原配置的影响,Nuxt 默认有vue-loader,会处理svg,img等
+      // 找到匹配.svg的规则,然后将存放svg文件的目录排除
+      const svgRule = config.module.rules.find(rule => rule.test.test('.svg'))
+      svgRule.exclude = [path.resolve(__dirname, 'assets/svg')]
+      //添加loader规则
+      config.module.rules.push({
+        test: /\.svg$/, //匹配.svg
+        include: [path.resolve(__dirname, 'assets/svg')], //将存放svg的目录加入到loader处理目录
+        use: [{ loader: 'svg-sprite-loader', options: { symbolId: 'icon-[name]' } }]
+      })
+    }
+ }
 })

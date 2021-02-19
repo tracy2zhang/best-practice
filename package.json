@@ -14,5 +14,8 @@
     "less-loader": "7.0.0",
     "lottie-web": "^5.7.6",
     "nuxt": "^2.14.7"
+  },
+  "devDependencies": {
+    "svg-sprite-loader": "^5.2.1"
   }
 }
