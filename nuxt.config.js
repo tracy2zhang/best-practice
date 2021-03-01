@@ -72,5 +72,9 @@ export default theme({
         use: [{ loader: 'svg-sprite-loader', options: { symbolId: 'icon-[name]' } }]
       })
     }
- }
+  },
+  buildModules: [
+    // Doc: https://github.com/nuxt-community/tailwindcss-module
+    "@nuxtjs/tailwindcss"
+  ]
 })
