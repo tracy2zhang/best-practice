@@ -1,5 +1,6 @@
 <template>
-  <div ref="banner" class="bilibili-banner" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" @mousemove="onMouseMove">
+  <div ref="banner" class="bilibili-banner">
+    <div class="cover" @mouseenter="onMouseEnter" @mouseleave="onMouseLeave" @mousemove="onMouseMove"></div>
     <div class="layer bg">
       <img class="morning" src="../../assets/img/bilibili/bilibili_bg_1.jpg" alt="">
       <img class="afternoon" src="../../assets/img/bilibili/bilibili_bg_2.jpg" alt="">
@@ -43,9 +44,17 @@ export default {
     margin: 20px 0;
     position: relative;
     padding: 0;
-    height: 80px;
+    height: 60px;
     overflow: hidden;
     transform: translate3d(0);
+    .cover {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 1;
+    }
     &:hover {
       .layer, .afternoon, .evening {
         transition: none;
@@ -63,7 +72,7 @@ export default {
       transform: ~"translatex(calc(var(--percentage) * -50px))";
       transition: .2s all ease-in;
       &.tree {
-        transform: ~"translatex(calc(var(--percentage) * -20px))";
+        transform: ~"translatex(calc(var(--percentage) * -50px))";
         filter: blur(2px);
       }
       img, video {
@@ -76,10 +85,10 @@ export default {
         transition: .2s all ease-in;
       }
       .afternoon {
-        opacity: ~"calc((var(--percentage) - 0.25) / 0.25)";
+        opacity: ~"calc((var(--percentage) - 0.2) / 0.2)";
       }
       .evening {
-        opacity: ~"calc((var(--percentage) - 0.5) / 0.25)";
+        opacity: ~"calc((var(--percentage) - 0.6) / 0.2)";
       }
     }
   }
